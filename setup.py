@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import division
 from __future__ import print_function
-from __future__ import unicode_literals
 
 import setuptools
 
@@ -13,7 +12,7 @@ packages = [
 ]
 
 setuptools.setup(
-    name="credits.lib",
+    name="credits.common",
     version="1.0.0",
     author="Credits Developers",
     packages=setuptools.find_packages(),
