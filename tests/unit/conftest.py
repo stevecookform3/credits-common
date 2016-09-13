@@ -7,18 +7,8 @@ import logbook
 import pytest
 
 from credits.address import CreditsAddressProvider
-from credits.consensus import Commit
-from credits.consensus import Vote
 from credits.hash import SHA256HashProvider
 from credits.key import ED25519SigningKey
-from credits.key import ED25519VerifyingKey
-from credits.merkle import MerkleMap
-from credits.proof import SingleKeyProof
-from credits.registry import ComponentRegistry
-from credits.serializer import JSONSerializer
-from credits.state import State
-from credits.transaction import Transaction
-from credits.transform import BalanceTransferTransform
 
 logger = logbook.Logger(__name__)
 
@@ -26,11 +16,6 @@ logger = logbook.Logger(__name__)
 @pytest.fixture("session")
 def hash_provider():
     return SHA256HashProvider()
-
-
-@pytest.fixture("session")
-def serializer():
-    return JSONSerializer()
 
 
 @pytest.fixture("session")
