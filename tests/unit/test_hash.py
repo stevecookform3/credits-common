@@ -6,7 +6,6 @@ from __future__ import print_function
 import logbook
 import pytest
 
-from credits.hash import Blake2bHashProvider
 from credits.hash import SHA256HashProvider
 from credits.hash import SHA512HashProvider
 
@@ -28,18 +27,9 @@ def output_sha512():
     return "19d8350a48bb40d04b4045955a9d95599aa5bd5b8c74c36c098b58c3cd8af142b8d9cf0417ef6dc88c4ed91c69ea8e2adce7afec1afb6a21d8cae681b0902997"  # noqa
 
 
-@pytest.fixture("session")
-def output_blake2b():
-    return "d6a1c4f1083b7535f7314305ac77fc6525b13333554e6a43bc75ef21f7fffc263b23fe1b713aac41151c50a4793c02cd7fcf66adbbacef4c547e8271c3d35111"  # noqa
-
-
 def test_sha256(input_string, output_sha256):
     assert SHA256HashProvider().hexdigest(input_string) == output_sha256
 
 
 def test_sha512(input_string, output_sha512):
     assert SHA512HashProvider().hexdigest(input_string) == output_sha512
-
-
-def test_blake2b(input_string, output_blake2b):
-    assert Blake2bHashProvider().hexdigest(input_string) == output_blake2b

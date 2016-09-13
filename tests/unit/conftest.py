@@ -34,23 +34,6 @@ def serializer():
 
 
 @pytest.fixture("session")
-def registry():
-    registry = ComponentRegistry()
-    registry.add(SHA256HashProvider)
-    registry.add(ED25519VerifyingKey)
-    registry.add(JSONSerializer)
-    registry.add(SingleKeyProof)
-    registry.add(Commit)
-    registry.add(MerkleMap)
-    registry.add(State)
-    registry.add(Transaction)
-    registry.add(Vote)
-    registry.add(BalanceTransferTransform)
-
-    return registry
-
-
-@pytest.fixture("session")
 def payload():
     return "exampletestpayload"
 
@@ -105,18 +88,3 @@ def ed25519_one_address(ed25519_one):
 def ed25519_two_address(ed25519_two):
     # 12dtJyqYHa4p1Tg2cR8coUPvy7sJcUNvoY
     return CreditsAddressProvider(ed25519_two.get_verifying_key().to_string()).get_address()
-
-
-@pytest.fixture("session")
-def state_balances():
-    return "works.credits.balances.Balances"
-
-
-@pytest.fixture("session")
-def state_nonce():
-    return "works.credits.core.IntegerNonce"
-
-
-@pytest.fixture("session")
-def state_vp():
-    return "works.credits.core.VotingPower"

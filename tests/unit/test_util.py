@@ -5,7 +5,7 @@ from __future__ import print_function
 
 import logbook
 
-from credits import util
+from credits.stringify import stringify
 from credits.address import CreditsAddressProvider
 
 logger = logbook.Logger(__name__)
@@ -95,24 +95,4 @@ def test_stringify():
     ]
 
     for t in tests:
-        assert(util.stringify(t["input"]) == t["output"])
-
-
-def test_paired_even():
-    expected = ((1, 2), (3, 4))
-    assert util.paired([1, 2, 3, 4]) == expected
-
-
-def test_paired_odd():
-    expected = ((1, 2), (3, 3))
-    assert util.paired([1, 2, 3]) == expected
-
-
-def test_paired_one():
-    expected = ((1, 1), )  # collection of one pair
-    assert util.paired([1]) == expected
-
-
-def test_paired_empty():
-    expected = tuple()
-    assert util.paired([]) == expected
+        assert(stringify(t["input"]) == t["output"])
