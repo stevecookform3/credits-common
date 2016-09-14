@@ -15,8 +15,10 @@ setuptools.setup(
     name="credits.common",
     version="1.0.0",
     author="Credits Developers",
-    packages=setuptools.find_packages(),
-    install_requires=packages,
     author_email="admin@credits.vision",
-    namespace_packages=['credits']
+    install_requires=packages,
+    namespace_packages=['credits'],
+    packages=setuptools.find_packages(),
+    url="https://github.com/CryptoCredits/credits-common",
+    download_url="https://github.com/CryptoCredits/credits-common/tarball/1.0.0",
 )
