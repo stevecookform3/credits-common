@@ -1,11 +1,17 @@
 Credits Common v1.0.0
 =====================
 
+## Install
+```
+pip install credits.common
+```
+
 ## Running Tests
 
 ```
 pip install tox; tox
 ```
+
 ##Licensing
 Distributed under AGPLv3 license, details available in LICENSE 
 file in this repo and at https://www.gnu.org/licenses/agpl-3.0.en.html.
