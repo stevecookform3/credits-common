@@ -10,7 +10,7 @@ from credits.interface import Marshallable
 
 
 class SigningKey(Marshallable):
-    FQDN = "NOTSET"
+    fqdn = "NOTSET"
 
     def __init__(self):
         self.logger = logbook.Logger(__name__)
@@ -37,7 +37,7 @@ class SigningKey(Marshallable):
 
 
 class VerifyingKey(Marshallable):
-    FQDN = "NOTSET"
+    fqdn = "NOTSET"
 
     def __init__(self):
         self.logger = logbook.Logger(__name__)
@@ -57,7 +57,7 @@ class VerifyingKey(Marshallable):
 
 
 class ED25519VerifyingKey(VerifyingKey):
-    FQDN = "works.credits.core.ED25519VerifyingKey"
+    fqdn = "works.credits.core.ED25519VerifyingKey"
 
     def __init__(self, vk):
         super(ED25519VerifyingKey, self).__init__()
@@ -69,7 +69,7 @@ class ED25519VerifyingKey(VerifyingKey):
 
     def marshall(self):
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
             "vks": self.to_string(),
         }
 
@@ -108,7 +108,7 @@ class ED25519VerifyingKey(VerifyingKey):
 
 
 class ED25519SigningKey(SigningKey):
-    FQDN = "works.credits.core.ED25519SigningKey"
+    fqdn = "works.credits.core.ED25519SigningKey"
 
     def __init__(self, sk):
         super(ED25519SigningKey, self).__init__()
@@ -120,7 +120,7 @@ class ED25519SigningKey(SigningKey):
 
     def marshall(self):
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
             "sks": self.to_string(),
         }
 
