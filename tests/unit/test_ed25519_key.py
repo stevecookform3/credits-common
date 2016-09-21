@@ -30,7 +30,7 @@ def test_sk_sign(sk_ed25519, payload, payload_signature_ed25519):
 
 
 def test_sk_fqdn(sk_ed25519):
-    assert sk_ed25519.FQDN == "works.credits.core.ED25519SigningKey"
+    assert sk_ed25519.fqdn == "works.credits.core.ED25519SigningKey"
 
 
 def test_vk_from_string(vks_ed25519):
@@ -47,4 +47,4 @@ def test_vk_verify(vk_ed25519, payload, payload_signature_ed25519):
 
 
 def test_vk_fqdn(vk_ed25519):
-    assert vk_ed25519.FQDN == "works.credits.core.ED25519VerifyingKey"
+    assert vk_ed25519.fqdn == "works.credits.core.ED25519VerifyingKey"

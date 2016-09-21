@@ -14,7 +14,7 @@ from credits.interface import Marshallable
 class HashProvider(Marshallable):
     __metaclass__ = abc.ABCMeta
 
-    FQDN = "NOTSET"
+    fqdn = "NOTSET"
 
     def __init__(self):
         self.logger = logbook.Logger(__name__)
@@ -27,7 +27,7 @@ class HashProvider(Marshallable):
 
 
 class SHA256HashProvider(HashProvider):
-    FQDN = "works.credits.core.SHA256HashProvider"
+    fqdn = "works.credits.core.SHA256HashProvider"
 
     def hexdigest(self, i):
         """
@@ -40,7 +40,7 @@ class SHA256HashProvider(HashProvider):
 
     def marshall(self):
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
         }
 
     @classmethod
@@ -49,7 +49,7 @@ class SHA256HashProvider(HashProvider):
 
 
 class SHA512HashProvider(HashProvider):
-    FQDN = "works.credits.core.SHA512HashProvider"
+    fqdn = "works.credits.core.SHA512HashProvider"
 
     def hexdigest(self, i):
         """
@@ -62,7 +62,7 @@ class SHA512HashProvider(HashProvider):
 
     def marshall(self):
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
         }
 
     @classmethod
