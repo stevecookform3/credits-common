@@ -3,6 +3,14 @@
 from __future__ import division
 from __future__ import print_function
 
+import sys
+import codecs
+
+
+BASE_STRING = (bytes, str)
+if int(sys.version[0]) == 2:
+    BASE_STRING = (str, unicode)
+
 
 def stringify(value):
     """
@@ -11,8 +19,13 @@ def stringify(value):
 
     :rtype: str
     """
-    if isinstance(value, basestring):
-        return value.encode("hex")
+    if isinstance(value, BASE_STRING):
+        if not isinstance(value, bytes):
+            value = value.encode()
+        return codecs.encode(value, "hex").decode()
+
+    elif isinstance(value, str):
+        return codecs.decode(value.decode(), "hex")
 
     elif isinstance(value, int):
         return hex(value)

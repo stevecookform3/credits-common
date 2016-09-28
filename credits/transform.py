@@ -39,7 +39,7 @@ class Transform(Marshallable, Hashable):
 
         :return:
         """
-        return []
+        raise NotImplementedError()
 
     def get_challenge(self, hash_provider):
         raise NotImplementedError()

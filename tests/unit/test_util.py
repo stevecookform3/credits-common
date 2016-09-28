@@ -15,15 +15,15 @@ def test_CreditsAddressProvider_get_address(hash_provider):
     tests = [
         {
             "input": "2cd32af3ec59cac5e1b6acb2a6ed4116de68aa68ffa242d43229a1ca0a4c6c1a",
-            "output": "1FG3LHD7kmQeZnCUXQJ756H2sGvAwiQCY"
+            "output": "1FG3LHD7kmQeZnCUXQJ756H2sGv9L8oRJ",
         },
         {
             "input": "e4a3dad9a6ee130a2a5564e2db7542c80fb87f6bf44b16b123bd5c2d871ebad6",
-            "output": "17BFRzguaynmGbH8yG9TduAiVEmiR4bQUs"
+            "output": "17BFRzguaynmGbH8yG9TduAiVEmiUiNnvZ",
         },
         {
             "input": "2fb08f51d36f84fb04db02f6aa392398469215c28c8152a7ec3916d67edce57a",
-            "output": "17qJUw7avjKQVYDAXMxf5CCP1yNTYyxnjE"
+            "output": "17qJUw7avjKQVYDAXMxf5CCP1yNTYhoviD",
         },
     ]
 

@@ -37,8 +37,13 @@ class CreditsAddressProvider(AddressProvider):
 
         :rtype: str
         """
-        digest = "00" + sha256(self.value).hexdigest()[:40]
-        checksum = sha256(sha256(digest).hexdigest()).hexdigest()[:8]
+        # Py2/3
+        value = self.value
+        if not isinstance(value, bytes):
+            value = value.encode()
+
+        digest = b"\x00" + sha256(value).digest()[:20]
+        checksum = sha256(digest).digest()[:4]
         address = digest + checksum
 
-        return b58encode(address.decode("hex"))
+        return b58encode(address)

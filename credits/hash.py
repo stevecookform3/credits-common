@@ -12,18 +12,16 @@ from credits.interface import Marshallable
 
 
 class HashProvider(Marshallable):
-    __metaclass__ = abc.ABCMeta
-
     fqdn = "NOTSET"
 
     def __init__(self):
         self.logger = logbook.Logger(__name__)
 
-    @abc.abstractmethod
     def hexdigest(self, i):
         """
         Given a string input of 'i', return a cryptographic hash of it's contents.
         """
+        raise NotImplementedError()
 
 
 class SHA256HashProvider(HashProvider):
@@ -36,6 +34,8 @@ class SHA256HashProvider(HashProvider):
         :type i: str
         :rtype: str
         """
+        if not isinstance(i, bytes):
+            i = i.encode()
         return hashlib.sha256(i).hexdigest()
 
     def marshall(self):
@@ -58,6 +58,8 @@ class SHA512HashProvider(HashProvider):
         :type i: str
         :rtype: str
         """
+        if not isinstance(i, bytes):
+            i = i.encode()
         return hashlib.sha512(i).hexdigest()
 
     def marshall(self):

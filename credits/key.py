@@ -5,6 +5,7 @@ from __future__ import print_function
 
 import ed25519
 import logbook
+import codecs
 
 from credits.interface import Marshallable
 
@@ -81,7 +82,10 @@ class ED25519VerifyingKey(VerifyingKey):
         :type sks: str
         :rtype: credits.key.ED25519VerifyingKey
         """
-        vk = ed25519.VerifyingKey(vks.decode("hex"))
+        if not isinstance(vks, bytes):
+            vks = vks.encode()
+
+        vk = ed25519.VerifyingKey(codecs.decode(vks, "hex"))
         return cls(vk)
 
     def to_string(self):
@@ -90,7 +94,7 @@ class ED25519VerifyingKey(VerifyingKey):
 
         :rtype: str
         """
-        return self.vk.to_ascii(encoding="hex")
+        return self.vk.to_ascii(encoding="hex").decode()
 
     def verify(self, data, signature):
         """
@@ -101,8 +105,9 @@ class ED25519VerifyingKey(VerifyingKey):
         :return: bool
         """
         try:
-            self.vk.verify(signature.decode("hex"), data.encode("utf-8"))
+            self.vk.verify(codecs.decode(signature, "hex"), codecs.encode(data, "utf-8"))
             return True
+
         except ed25519.BadSignatureError:
             return False
 
@@ -142,11 +147,14 @@ class ED25519SigningKey(SigningKey):
         :type sks: str
         :rtype: credits.key.ED25519SigningKey
         """
-        sk = ed25519.SigningKey(sks.decode("hex"))
+        if not isinstance(sks, bytes):
+            sks = sks.encode()
+
+        sk = ed25519.SigningKey(codecs.decode(sks, "hex"))
         return cls(sk)
 
     def to_string(self):
-        return self.sk.to_ascii(encoding="hex")
+        return self.sk.to_ascii(encoding="hex").decode()
 
     def get_verifying_key(self):
         """
@@ -163,4 +171,7 @@ class ED25519SigningKey(SigningKey):
         :type data: str
         :return: str
         """
-        return self.sk.sign(str(data)).encode("hex")
+        if not isinstance(data, bytes):
+            data = data.encode()
+
+        return codecs.encode(self.sk.sign(data), "hex").decode()

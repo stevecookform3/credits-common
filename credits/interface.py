@@ -3,38 +3,31 @@
 from __future__ import division
 from __future__ import print_function
 
-import abc
-
 
 class Marshallable(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
     def marshall(self):
         """
         Convert this class into a primitive map.
         """
+        raise NotImplementedError()
 
     @classmethod
-    @abc.abstractmethod
     def unmarshall(cls, registry, payload):
         """
         Take a primitive map and restore it into an instance.
         """
+        raise NotImplementedError()
 
 
 class Applicable(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
     def verify(self, state):
         """
         Verify this object against a given state. Throw exception if not valid.
 
         :type state: credits.state.State
         """
+        raise NotImplementedError()
 
-    @abc.abstractmethod
     def apply(self, state):
         """
         Apply this object to the state, mutate the state and return it.
@@ -42,12 +35,10 @@ class Applicable(object):
         :type state: credits.state.State
         :rtype state: credits.state.State
         """
+        raise NotImplementedError()
 
 
 class Signable(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
     def sign(self, signing_key):
         """
         Sign this object based on it's contents. Then return a new instance of the object with it's signature and
@@ -58,12 +49,10 @@ class Signable(object):
         :returns: A signature of the contents of this object.
         :rtype: self
         """
+        raise NotImplementedError()
 
 
 class Hashable(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
     def hash(self, hash_provider):
         """
         Hash this object based on it's contents. Then return a new instance of the object with it's hash.
@@ -72,19 +61,18 @@ class Hashable(object):
         :returns: A signature of the contents of this object.
         :rtype: self
         """
+        raise NotImplementedError()
 
 
 class Transactional(object):
-    __metaclass__ = abc.ABCMeta
-
-    @abc.abstractmethod
     def rollback(self):
         """
         Revert the unconfirmed changes to this Transactional object.
         """
+        raise NotImplementedError()
 
-    @abc.abstractmethod
     def commit(self):
         """
         Commit the unconfirmed changes to this Transactional object.
         """
+        raise NotImplementedError()
