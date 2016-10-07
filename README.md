@@ -1,6 +1,11 @@
 Credits Common v1.0.2
 =====================
 
+## Install
+```
+pip install credits.common
+```
+
 ## Running Tests
 
 ```
