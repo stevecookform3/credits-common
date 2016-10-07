@@ -5,7 +5,7 @@ from __future__ import print_function
 
 import setuptools
 
-version = "1.0.1"
+version = "1.0.2"
 
 packages = [
     "base58==0.2.2",

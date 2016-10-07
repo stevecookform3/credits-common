@@ -1,4 +1,4 @@
-Credits Common v1.0.1
+Credits Common v1.0.2
 =====================
 
 ## Running Tests
