@@ -17,7 +17,7 @@ class Proof(Marshallable, Applicable, Signable):
 
 
 class SingleKeyProof(Proof):
-    FQDN = 'works.credits.core.SingleKeyProof'
+    fqdn = 'works.credits.core.SingleKeyProof'
 
     STATE_NONCE = "works.credits.core.IntegerNonce"
 
@@ -118,7 +118,7 @@ class SingleKeyProof(Proof):
             verifying_key = self.verifying_key.marshall()
 
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
             "address": self.address,
             "nonce": self.nonce,
             "challenge": self.challenge,

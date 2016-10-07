@@ -12,7 +12,7 @@ from credits.stringify import stringify
 
 
 class Transaction(Marshallable, Applicable, Hashable):
-    FQDN = "works.credits.core.Transaction"
+    fqdn = "works.credits.core.Transaction"
 
     def __init__(self, transform, proofs):
         """
@@ -106,7 +106,7 @@ class Transaction(Marshallable, Applicable, Hashable):
             proofs[address] = proof.marshall()
 
         return {
-            "fqdn": self.FQDN,
+            "fqdn": self.fqdn,
             "transform": self.transform.marshall(),
             "proofs": dict((address, proof.marshall()) for address, proof in self.proofs.items()),
         }
