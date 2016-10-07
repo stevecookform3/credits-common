@@ -61,7 +61,7 @@ def check_transform(cls, dependencies, kwargs, state, state_expected):
     # Check that it still digests like it did before.
     assert transform.hash(hash_provider) == digest
 
-    # Verify against some demo state that it can apply either NOW or inthe FUTURE
+    # Verify against some demo state that it can apply either NOW or in the FUTURE
     result, error = transform.verify(deepcopy(state))
     if error is not None:
         raise error
