@@ -57,35 +57,3 @@ class BalanceTransform(transform.Transform):
     def hash(self, hash_provider):
         return hash_provider.hexdigest(stringify.stringify(self.marshall()))
 
-
-if __name__ == "__main__":
-    # Construct the Transform with these.
-    kwargs = {
-        "addr_from": "davidsaddress",
-        "addr_to": "jacobsaddress",
-        "amount": 100,
-    }
-    
-    # This is an initial state that both verify and apply will use
-    state = {
-        "credits.test.Balances": {
-            "davidsaddress": 1000,
-        }
-    }
-
-    # This is how state should look after the Transform has applied to it.
-    state_expected = {
-        "credits.test.Balances": {
-            "davidsaddress": 900,
-            "jacobsaddress": 100,  # This key is added as a result of transform.apply()
-        }
-    }
-
-    # This call should succeed without assertion errors or exceptions
-    test.check_transform(
-        cls=BalanceTransform,
-        dependencies=[],
-        kwargs=kwargs,
-        state=state,
-        state_expected=state_expected,
-    )
