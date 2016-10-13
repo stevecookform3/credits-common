@@ -15,7 +15,7 @@ alice_address = CreditsAddressProvider(alice_key.to_string()).get_address()
 
 # Saving the key to disk by marshalling it
 with open("alice_key.json", "w") as out:
-    out.write(alice_key.marshall()
+    out.write(alice_key.marshall())
 
 # Loading it would be also simple when you'll need it
 # with open("alice_key.json") as keyfile:
